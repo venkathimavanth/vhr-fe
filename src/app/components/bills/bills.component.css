@@ -1,20 +1,14 @@
 .top-bar {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: calc(100% - 48px);
   padding: 12px 24px;
   background: #1e1e1e;
 }
 
 .top-bar-child {
   display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
   gap: 12px;
 }
-
 
 .top-bar button {
   background: transparent;
@@ -26,25 +20,76 @@
 
 .top-bar button.active {
   background: #333;
+  border-radius: 5px;
 }
 
-.bill-list {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: #222;
-    border-radius: 8px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #444;
-  }
-  
+.bill-table-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #222;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+}
+
+.bill-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #ddd;
+}
+
+.bill-table thead {
+  background: #333;
+  color: white;
+}
+
+.bill-table th,
+.bill-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+.bill-table tbody tr:hover {
+  background: #2a2a2a;
+  color: lightgreen;
+  transition: color 0.3s;
+}
+
+.bill-table td {
+  font-size: 14px;
+}
+
+.bill-table th {
+  font-weight: bold;
+}
+
+.bill-table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bill-table-container::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+.bill-table-container::-webkit-scrollbar-track {
+  background: #222;
+}
+
+mat-menu {
+  background: #222;
+  color: white;
+}
+
+.add-button {
+  color: lightgreen !important;
+  transition: color 0.3s;
+}
+
+
+.add-button:hover {
+  color: green !important;
+}

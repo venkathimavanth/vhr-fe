@@ -14,6 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { AddTransactionComponent } from './components/bills/add-transaction/add-transaction.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BillsComponent,
     SidenavComponent,
     AddBillComponent,
+    AddTransactionComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

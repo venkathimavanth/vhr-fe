@@ -1,18 +1,15 @@
-<div id="content" style="display: flex !important;"  *ngIf="isLoggedIn; else loginTemplate">
-    <div
-        style="width: 201px;"
-    >
+<div id="content" style="display: flex !important;" *ngIf="isLoggedIn; else loginTemplate">
+    <div style="width: 221px;">
         <app-sidenav></app-sidenav>
     </div>
-    <div
-        style="width: calc(100vw - 201px);"
-    >
+    <div style="width: calc(100vw - 221px);">
         <router-outlet></router-outlet>
     </div>
 </div>
 
 <ng-template #loginTemplate>
     <div class="login-container">
-        <input type="password" [(ngModel)]="password" (keydown)="validatePassword($event)" placeholder="Enter Password" />
+        <input type="password" [(ngModel)]="password" (keydown)="validatePassword($event)"
+            placeholder="Enter Password" />
     </div>
 </ng-template>

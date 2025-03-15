@@ -20,7 +20,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = true;
+    this.isLoggedIn = false;
   }
 
   validatePassword(event: KeyboardEvent) {

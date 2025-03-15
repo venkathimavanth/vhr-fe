@@ -11,6 +11,7 @@ export class SidenavComponent implements OnInit {
   targetTime!: number;
   remainingTime!: number;
   intervalId!: any;
+  selectedNav: string = '/';
 
 
   constructor(private router: Router) { }
@@ -20,7 +21,7 @@ export class SidenavComponent implements OnInit {
   }
 
   startTimer(): void {
-    this.targetTime = new Date().getTime() + 50 * 60 * 1000; // 5 mins ahead
+    this.targetTime = new Date().getTime() + 5 * 60 * 1000; // 5 mins ahead
     this.updateTime();
     this.intervalId = setInterval(() => this.updateTime(), 1000);
   }
@@ -45,6 +46,7 @@ export class SidenavComponent implements OnInit {
   }
 
   navigateTo(route: string) {
+    this.selectedNav = route;
     this.router.navigate([route]);
   }
 

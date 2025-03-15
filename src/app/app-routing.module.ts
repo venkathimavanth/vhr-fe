@@ -4,9 +4,9 @@ import { HomeComponent } from './components/home/home.component';
 import { BillsComponent } from './components/bills/bills.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'bills', component: BillsComponent },
-  // { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 

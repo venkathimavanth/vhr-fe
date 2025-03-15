@@ -1,23 +1,47 @@
 <div class="top-bar">
   <div class="top-bar-child">
     <div *ngFor="let type of billTypes">
-      <button (click)="onTypeChange(type.type)" 
-            [class.active]="billType === type.type">{{type.name}}</button>
+      <button (click)="onTypeChange(type.type)" [class.active]="billType === type.type">{{type.name}}</button>
     </div>
   </div>
   <div class="top-bar-child">
     <div>
-      <button (click)="onAddNewBill()" style="color:lightgreen !important">+ Add</button>
+      <button (click)="onAddNewBill()" class="add-button">+ Add</button>
     </div>
   </div>
 </div>
-  
-  <div class="bill-list">
-    <ul>
-      <li *ngFor="let bill of bills">
-        <span>{{ bill.title }}</span>
-        <span>${{ bill.amount }}</span>
-        <small>Next: {{ bill.nextPayment | date }}</small>
-      </li>
-    </ul>
-  </div>
+
+<div class="bill-table-container">
+  <table class="bill-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Next Payment</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount</th>
+        <th>Note</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bill of bills">
+        <td>{{ bill.title }}</td>
+        <td>{{ bill.nextPayment | date }}</td>
+        <td>{{ bill.startDate ? (bill.startDate | date) : '-' }}</td>
+        <td>{{ bill.endDate ? (bill.endDate | date) : '-' }}</td>
+        <td>₹{{ bill.amount }}</td>
+        <td>{{ bill.note || '-' }}</td>
+        <td>
+          <button mat-icon-button [matMenuTriggerFor]="menu" (click)="openMenu($event, bill)">⋮</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onViewBill(selectedBill)">View</button>
+  <button mat-menu-item (click)="onEditBill(selectedBill)">Edit</button>
+  <button mat-menu-item (click)="onEditBill(selectedBill)">Add Transaction</button>
+</mat-menu>
