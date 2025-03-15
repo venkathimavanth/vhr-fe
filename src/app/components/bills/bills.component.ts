@@ -19,6 +19,9 @@ export class BillsComponent implements OnInit {
   billType: string = "monthly_payments";
   bills: any[] = [];
   selectedBill: any;
+  isLoading: boolean = false;
+  loadingText: string = "Loading...";
+  private loadingInterval: any;
 
   constructor(private billsService: BillsService, public dialog: MatDialog) { }
 
@@ -29,9 +32,25 @@ export class BillsComponent implements OnInit {
   }
 
   fetchBills() {
+    this.isLoading = true;
+    this.animateLoadingText();
     this.billsService.getBills(this.billType).subscribe((data) => {
+      clearInterval(this.loadingInterval);
+      this.isLoading = false;
       this.bills = data;
     });
+  }
+
+  animateLoadingText() {
+    let dots = 2;
+    this.loadingInterval = setInterval(() => {
+      if (!this.isLoading) {
+        clearInterval(this.loadingInterval);
+        return;
+      }
+      dots = (dots + 1) % 4;
+      this.loadingText = "Loading" + ".".repeat(dots);
+    }, 500);
   }
 
   onTypeChange(newType: string) {

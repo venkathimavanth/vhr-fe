@@ -38,6 +38,9 @@
       </tr>
     </tbody>
   </table>
+  <div *ngIf="isLoading" class="loading-container">
+    <span class="loading-text">{{ loadingText }}</span>
+  </div>
 </div>
 
 <mat-menu #menu="matMenu">

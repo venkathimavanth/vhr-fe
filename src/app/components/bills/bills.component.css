@@ -93,3 +93,17 @@ mat-menu {
 .add-button:hover {
   color: green !important;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loading-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: lightgreen;
+  text-align: center;
+}
