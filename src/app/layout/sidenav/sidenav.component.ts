@@ -20,7 +20,7 @@ export class SidenavComponent implements OnInit {
   }
 
   startTimer(): void {
-    this.targetTime = new Date().getTime() + 5 * 60 * 1000; // 5 mins ahead
+    this.targetTime = new Date().getTime() + 50 * 60 * 1000; // 5 mins ahead
     this.updateTime();
     this.intervalId = setInterval(() => this.updateTime(), 1000);
   }
@@ -30,6 +30,7 @@ export class SidenavComponent implements OnInit {
     this.remainingTime = Math.max(0, this.targetTime - currentTime);
     if (this.remainingTime <= 0) {
       clearInterval(this.intervalId);
+      window.location.reload();
     }
   }
 

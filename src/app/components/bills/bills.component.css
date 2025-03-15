@@ -1,21 +1,31 @@
 .top-bar {
-display: flex;
-justify-content: center;
-gap: 10px;
-padding: 10px;
-background: #1e1e1e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 48px);
+  padding: 12px 24px;
+  background: #1e1e1e;
 }
 
+.top-bar-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+}
+
+
 .top-bar button {
-background: #333;
-color: white;
-border: none;
-padding: 10px 15px;
-cursor: pointer;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
 }
 
 .top-bar button.active {
-background: #007BFF;
+  background: #333;
 }
 
 .bill-list {

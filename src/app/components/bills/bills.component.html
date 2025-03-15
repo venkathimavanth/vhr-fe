@@ -1,12 +1,18 @@
 <div class="top-bar">
-    <button (click)="onTypeChange('monthly_payments')" 
-            [class.active]="billType === 'monthly_payments'">Monthly Payments</button>
-    <button (click)="onTypeChange('all_payments')" 
-            [class.active]="billType === 'all_payments'">All Payments</button>
+  <div class="top-bar-child">
+    <div *ngFor="let type of billTypes">
+      <button (click)="onTypeChange(type.type)" 
+            [class.active]="billType === type.type">{{type.name}}</button>
+    </div>
+  </div>
+  <div class="top-bar-child">
+    <div>
+      <button (click)="onAddNewBill()" style="color:lightgreen !important">+ Add</button>
+    </div>
+  </div>
 </div>
   
   <div class="bill-list">
-    <h3>Bills ({{ billType }})</h3>
     <ul>
       <li *ngFor="let bill of bills">
         <span>{{ bill.title }}</span>

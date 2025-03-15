@@ -1,0 +1,39 @@
+<h2>Add New Bill</h2>
+<form class="bill-form">
+    <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" name="title" [(ngModel)]="bill.title" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" name="amount" [(ngModel)]="bill.amount" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Next Payment</mat-label>
+        <input matInput type="date" name="nextPayment" [(ngModel)]="bill.nextPayment" required />
+    </mat-form-field>
+
+    <div class="double-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput type="date" name="startDate" [(ngModel)]="bill.startDate" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput type="date" name="endDate" [(ngModel)]="bill.endDate" required />
+        </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Note</mat-label>
+        <textarea matInput name="note" [(ngModel)]="bill.note"></textarea>
+    </mat-form-field>
+
+    <div class="dialog-actions">
+        <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+    </div>
+</form>

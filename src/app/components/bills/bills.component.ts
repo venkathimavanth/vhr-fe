@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BillsService } from 'src/app/services/bills.service';
+import { AddBillComponent } from './add-bill/add-bill.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bills',
@@ -9,19 +11,19 @@ import { BillsService } from 'src/app/services/bills.service';
 export class BillsComponent implements OnInit {
 
 
-  billType: string = 'monthly_payments';
+  billTypes: any[] = [
+    { name: "Monthly Bills", type: "monthly_payments", active: true },
+    { name: "All Payments", type: "all_payments", active: false },
+  ];
+  billType: string = "monthly_payments";
   bills: any[] = [];
-  
-  constructor(private billsService: BillsService) {}
+
+  constructor(private billsService: BillsService, public dialog: MatDialog) { }
 
   ngOnInit() {
     if (this.billType) {
       this.fetchBills();
     }
-  }
-
-  onTypeChange(newType: string) {
-    this.billType = newType;
   }
 
   fetchBills() {
@@ -30,5 +32,23 @@ export class BillsComponent implements OnInit {
     });
   }
 
+  onTypeChange(newType: string) {
+    this.billType = newType;
+  }
 
+  onAddNewBill() {
+    const dialogRef = this.dialog.open(AddBillComponent, {
+      disableClose: false,
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        result.type = this.billType;
+        this.billsService.addBill(result).subscribe(() => {
+          this.fetchBills();
+        });
+      }
+    });
+  }
 }
