@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/demo-styling.css"
+              "src/root-styling.css"
             ],
             "scripts": []
           },
