@@ -1,0 +1,16 @@
+<div class="top-bar">
+    <div class="top-bar-child">
+        <div *ngFor="let type of analysisTypes">
+            <button (click)="onTypeChange(type.type)" [class.active]="analysisType === type.type">{{type.name}}</button>
+        </div>
+    </div>
+    <div class="top-bar-child">
+    </div>
+</div>
+
+<div class="analysis-table-container">
+    <div></div>
+    <div *ngIf="isLoading" class="loading-container">
+        <span class="loading-text">{{ loadingText }}</span>
+    </div>
+</div>

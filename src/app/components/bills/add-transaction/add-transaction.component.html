@@ -1,1 +1,28 @@
-<p>add-transaction works!</p>
+<h2>Add Transaction - {{bill.title}}</h2>
+<form class="bill-form">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" name="amount" [(ngModel)]="billTransaction.amount" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Payment Date</mat-label>
+        <input matInput type="date" name="paymentDate" [(ngModel)]="billTransaction.paymentDate" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Next Payment</mat-label>
+        <input matInput type="date" name="nextPayment" [(ngModel)]="billTransaction.nextPayment" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Note</mat-label>
+        <textarea matInput name="note" [(ngModel)]="billTransaction.note"></textarea>
+    </mat-form-field>
+
+    <div class="dialog-actions">
+        <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+    </div>
+</form>

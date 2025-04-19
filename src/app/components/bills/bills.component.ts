@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BillsService } from 'src/app/services/bills.service';
 import { AddBillComponent } from './add-bill/add-bill.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 
 @Component({
   selector: 'app-bills',
@@ -10,13 +11,12 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class BillsComponent implements OnInit {
 
-
   billTypes: any[] = [
     { name: "Monthly Bills", type: "monthly_payments", active: true },
     { name: "All Payments", type: "all_payments", active: false },
     { name: "SIP Payments", type: "sip_payments", active: false },
   ];
-  billType: string = "monthly_payments";
+  billType: string = "all_payments";
   bills: any[] = [];
   selectedBill: any;
   isLoading: boolean = false;
@@ -66,6 +66,7 @@ export class BillsComponent implements OnInit {
 
   onEditBill(bill: any) {
     this.dialog.open(AddBillComponent, {
+      disableClose: false,
       width: '600px',
       data: { billType: this.billType, bill: bill },
     });
@@ -80,6 +81,20 @@ export class BillsComponent implements OnInit {
       disableClose: false,
       width: '600px',
       data: { billType: this.billType },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.fetchBills();
+      }
+    });
+  }
+
+  onAddTransaction(bill: any) {
+    const dialogRef = this.dialog.open(AddTransactionComponent, {
+      disableClose: false,
+      width: '600px',
+      data: { billType: this.billType, bill: bill },
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { AddTransactionComponent } from './components/bills/add-transaction/add-transaction.component';
+import { AnalysisComponent } from './components/analysis/analysis.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AddTransactionComponent } from './components/bills/add-transaction/add-
     SidenavComponent,
     AddBillComponent,
     AddTransactionComponent,
+    AnalysisComponent,
   ],
   imports: [
     BrowserModule,

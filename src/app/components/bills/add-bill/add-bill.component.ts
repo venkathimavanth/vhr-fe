@@ -42,7 +42,9 @@ export class AddBillComponent {
   }
 
   onSave() {
-    console.log(this.bill); return;
+    if (this.edit) {
+      return;
+    }
     this.bill.type = this.billType;
     this.billsService.addBill(this.bill).subscribe(() => {
       this.dialogRef.close(this.bill);
