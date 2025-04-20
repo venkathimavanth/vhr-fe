@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AnalysisService } from 'src/app/services/analysis.service';
 
 @Component({
   selector: 'app-analysis',
@@ -15,18 +16,28 @@ export class AnalysisComponent implements OnInit {
   isLoading: boolean = false;
   loadingText: string = "Loading...";
   private loadingInterval: any;
+  month: string = "";
+  monthlyAnalysisData: any = null;
 
-  constructor(public dialog: MatDialog) { }
+
+  constructor(public dialog: MatDialog, private analysisService: AnalysisService) { }
 
   ngOnInit() {
     if (this.analysisType) {
-      this.fetchAnalysis();
+      // this.fetchAnalysis();
     }
   }
 
   fetchAnalysis() {
-    this.isLoading = true;
-    this.animateLoadingText();
+    if (this.analysisType && this.month?.length) {
+      this.isLoading = true;
+      this.animateLoadingText();
+      this.analysisService.getAnalysisByMonth(this.month).subscribe((data) => {
+        this.monthlyAnalysisData = data;
+        clearInterval(this.loadingInterval);
+        this.isLoading = false;
+      });
+    }
   }
 
   animateLoadingText() {
@@ -43,6 +54,11 @@ export class AnalysisComponent implements OnInit {
 
   onTypeChange(newType: string) {
     this.analysisType = newType;
+    this.fetchAnalysis();
+  }
+
+  onSelectedMonthChange(value: string) {
+    this.month = value;
     this.fetchAnalysis();
   }
 

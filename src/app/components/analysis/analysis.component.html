@@ -8,8 +8,14 @@
     </div>
 </div>
 
-<div class="analysis-table-container">
-    <div></div>
+<div class="analysis-container">
+    <div class="analysis-div">
+        <app-month-dropdown (selectedChange)="onSelectedMonthChange($event)">
+        </app-month-dropdown>
+    </div>
+    <div *ngIf="!isLoading">
+        <app-pie-chart [monthlyAnalysisData]="monthlyAnalysisData"></app-pie-chart>
+    </div>
     <div *ngIf="isLoading" class="loading-container">
         <span class="loading-text">{{ loadingText }}</span>
     </div>

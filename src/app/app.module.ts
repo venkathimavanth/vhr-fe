@@ -17,6 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { AddTransactionComponent } from './components/bills/add-transaction/add-transaction.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
+import { MonthDropdownComponent } from './common/month-dropdown/month-dropdown.component';
+import { PieChartComponent } from './components/analysis/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { AnalysisComponent } from './components/analysis/analysis.component';
     AddBillComponent,
     AddTransactionComponent,
     AnalysisComponent,
+    MonthDropdownComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,

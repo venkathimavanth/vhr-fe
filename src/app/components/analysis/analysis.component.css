@@ -23,7 +23,7 @@
     border-radius: 5px;
 }
 
-.bill-table-container {
+.analysis-container {
     width: 90%;
     max-width: 1000px;
     margin: 20px auto;
@@ -34,48 +34,49 @@
     overflow-x: auto;
 }
 
-.bill-table {
+.analysis-div {
     width: 100%;
-    border-collapse: collapse;
-    color: #ddd;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
 }
 
-.bill-table thead {
+.analysis-table thead {
     background: #333;
     color: white;
 }
 
-.bill-table th,
-.bill-table td {
+.analysis-table th,
+.analysis-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #444;
 }
 
-.bill-table tbody tr:hover {
+.analysis-table tbody tr:hover {
     background: #2a2a2a;
     color: lightgreen;
     transition: color 0.3s;
 }
 
-.bill-table td {
+.analysis-table td {
     font-size: 14px;
 }
 
-.bill-table th {
+.analysis-table th {
     font-weight: bold;
 }
 
-.bill-table-container::-webkit-scrollbar {
+.analysis-table-container::-webkit-scrollbar {
     width: 8px;
 }
 
-.bill-table-container::-webkit-scrollbar-thumb {
+.analysis-table-container::-webkit-scrollbar-thumb {
     background: #555;
     border-radius: 5px;
 }
 
-.bill-table-container::-webkit-scrollbar-track {
+.analysis-table-container::-webkit-scrollbar-track {
     background: #222;
 }
 
@@ -98,7 +99,7 @@ mat-menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 300px;
 }
 
 .loading-text {

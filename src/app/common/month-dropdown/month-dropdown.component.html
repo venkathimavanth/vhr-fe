@@ -1,0 +1,17 @@
+<div class="month-year-container">
+    <div class="selector" (click)="toggleDropdown()">
+        {{ selectedMonthYear || 'Select Month & Year' }}
+        <span class="arrow">&#9662;</span>
+    </div>
+
+    <div class="dropdown" *ngIf="showDropdown">
+        <div class="year-section" *ngFor="let year of years">
+            <div class="year">{{ year }}</div>
+            <div class="months">
+                <button *ngFor="let month of months" (click)="setMonthYear(month, year)">
+                    {{ month }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

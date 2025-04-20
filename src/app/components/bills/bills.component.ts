@@ -13,8 +13,7 @@ export class BillsComponent implements OnInit {
 
   billTypes: any[] = [
     { name: "Monthly Bills", type: "monthly_payments", active: true },
-    { name: "All Payments", type: "all_payments", active: false },
-    { name: "SIP Payments", type: "sip_payments", active: false },
+    { name: "All Payments", type: "all_payments", active: false }
   ];
   billType: string = "all_payments";
   bills: any[] = [];
