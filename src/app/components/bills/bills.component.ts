@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BillsService } from 'src/app/services/bills.service';
+import { CommonService } from 'src/app/services/common.service';
 import { AddBillComponent } from './add-bill/add-bill.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTransactionComponent } from './add-transaction/add-transaction.component';
@@ -15,14 +16,14 @@ export class BillsComponent implements OnInit {
     { name: "Monthly Bills", type: "monthly_payments", active: true },
     { name: "All Payments", type: "all_payments", active: false }
   ];
-  billType: string = "all_payments";
+  billType: string = "monthly_payments";
   bills: any[] = [];
   selectedBill: any;
   isLoading: boolean = false;
   loadingText: string = "Loading...";
   private loadingInterval: any;
 
-  constructor(private billsService: BillsService, public dialog: MatDialog) { }
+  constructor(private billsService: BillsService, private commonService: CommonService, public dialog: MatDialog) { }
 
   ngOnInit() {
     if (this.billType) {
@@ -102,4 +103,12 @@ export class BillsComponent implements OnInit {
       }
     });
   }
+
+  copyNote(text: string) {
+    if (text.includes(':')) {
+      text = text.split(':')[1].replaceAll(' ', '');
+    }
+    this.commonService.copyNote(text, false);
+  }
+
 }

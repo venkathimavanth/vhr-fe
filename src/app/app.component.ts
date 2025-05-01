@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   isLoggedIn!: boolean;
   password!: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private commonService: CommonService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         console.log('Navigated to:', event.url);
@@ -24,9 +25,13 @@ export class AppComponent {
   }
 
   validatePassword(event: KeyboardEvent) {
-    if (event.key === 'Enter' && this.password === 'Password@123') {
-      this.isLoggedIn = true;
-    }
+    setTimeout(() => {
+      if (this.password === 'aaaa') {
+        this.isLoggedIn = true;
+      } else if (event.key === 'Enter') {
+        this.commonService.showToast("Invalid Password", "error")
+      }
+    }, 100);
   }
 
 }

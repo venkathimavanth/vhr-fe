@@ -29,7 +29,7 @@ export class PieChartComponent implements OnChanges {
 
       rawData.forEach((item: any) => {
         dataArray.push([
-          item.billType,
+          item.billType.replace('_', ' ').toUpperCase(),
           item.total]);
       });
 
@@ -42,10 +42,6 @@ export class PieChartComponent implements OnChanges {
           position: 'right',
           alignment: 'center',
           textStyle: { color: '#ffffff', fontSize: 14 }
-        },
-        tooltip: {
-          isHtml: false,
-          textStyle: { color: '#ffffff' }
         },
         chartArea: {
           left: '10%',

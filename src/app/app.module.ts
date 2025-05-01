@@ -19,6 +19,8 @@ import { AddTransactionComponent } from './components/bills/add-transaction/add-
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { MonthDropdownComponent } from './common/month-dropdown/month-dropdown.component';
 import { PieChartComponent } from './components/analysis/pie-chart/pie-chart.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TransactionsComponent } from './components/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { PieChartComponent } from './components/analysis/pie-chart/pie-chart.com
     AnalysisComponent,
     MonthDropdownComponent,
     PieChartComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { PieChartComponent } from './components/analysis/pie-chart/pie-chart.com
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

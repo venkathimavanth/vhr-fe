@@ -1,0 +1,39 @@
+<div class="top-bar">
+    <div class="top-bar-child">
+        <div *ngFor="let type of transactionTypes">
+            <button (click)="onTypeChange(type.type)"
+                [class.active]="transactionType === type.type">{{type.name}}</button>
+        </div>
+    </div>
+    <div class="top-bar-child">
+        <div>
+            <!-- <button class="add-button">+ Add</button> -->
+        </div>
+    </div>
+</div>
+
+<div class="transaction-table-container">
+    <table class="transaction-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <td>{{ transaction.title }}</td>
+                <td>{{ transaction.date | date }}</td>
+                <td>₹{{ transaction.amount }}</td>
+                <td>{{
+                    transaction.note || '-' }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="isLoading" class="loading-container">
+        <span class="loading-text">{{ loadingText }}</span>
+    </div>
+</div>

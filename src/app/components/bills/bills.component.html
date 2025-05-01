@@ -31,7 +31,8 @@
         <td>{{ bill.startDate ? (bill.startDate | date) : '-' }}</td>
         <td>{{ bill.endDate ? (bill.endDate | date) : '-' }}</td>
         <td>₹{{ bill.amount }}</td>
-        <td>{{ bill.note || '-' }}</td>
+        <td (click)="copyNote(bill.note || '')" style="cursor: pointer;" title="Click to copy">{{ bill.note || '-' }}
+        </td>
         <td>
           <button mat-icon-button [matMenuTriggerFor]="menu" (click)="openMenu($event, bill)">⋮</button>
         </td>
