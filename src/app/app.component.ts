@@ -26,7 +26,7 @@ export class AppComponent {
 
   validatePassword(event: KeyboardEvent) {
     setTimeout(() => {
-      if (this.password === 'aaaaPPPP') {
+      if (this.password === 'aaaa********') {
         this.isLoggedIn = true;
       } else if (event.key === 'Enter') {
         this.commonService.showToast("Invalid Password", "error")
